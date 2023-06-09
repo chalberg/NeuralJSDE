@@ -19,6 +19,7 @@ class SinData(Dataset):
         sin_data = torch.zeros((n_samples, t_size))
         timestamps = torch.zeros((n_samples, t_size))
 
+        print("Generating irregular sin data ...")
         for i in range(n_samples):
             ts, _ = torch.sort(torch.rand(t_size) * 10)  # Random timestamps between 0 and 10
             amplitude = torch.rand(1) * 1.5 + 0.5  # Random amplitude between 0.5 and 2.0
@@ -31,4 +32,5 @@ class SinData(Dataset):
             sin_data[i] = sine_wave + noise
             timestamps[i] = ts
 
+        print("Done!")
         return sin_data, timestamps
